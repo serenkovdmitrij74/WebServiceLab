@@ -1,9 +1,9 @@
 <?php
-// db.php
+
 $host = 'localhost';
 $db   = 'tsj_service';
-$user = 'root'; // Стандартный пользователь XAMPP
-$pass = '';     // Стандартный пароль XAMPP (пустой)
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
