@@ -110,9 +110,6 @@ require_once 'logic.php';
                  placeholder="До" min="0">
         </div>
       </div>
-      <div class="form-text mt-1">
-        Можно указать только одну границу или обе
-      </div>
     </div>
     
     <div class="d-flex justify-content-end">
@@ -138,7 +135,7 @@ require_once 'logic.php';
               <?php foreach ($services as $row): ?>
                 <tr>
                   <td>
-                    <?php $img = 'images/' . htmlspecialchars($row['img_path']); ?>
+                    <?php $img = 'inc/images/' . htmlspecialchars($row['img_path']); ?>
                     <img src="<?= $img ?>" alt="Фото услуги" class="service-img">
                   </td>
                   <td><?= htmlspecialchars($row['name']) ?></td>
@@ -196,3 +193,4 @@ require_once 'logic.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
+
