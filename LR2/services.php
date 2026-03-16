@@ -18,12 +18,12 @@ require_once 'logic.php';
     <style>.service-img {width: 100px;height: auto;object-fit: cover;}</style>
   </head>
 
-  <body class="small">
+  <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-white">
+      <nav class="navbar navbar-expand-lg bg-white py-4">
         <div class="container">
           <a class="navbar-brand">
-            <img src="./inc/images/favicon-32x32.png" alt="logo"> минжкх
+            <img src="./inc/image/favicon-32x32.png" alt="logo"> минжкх
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -66,21 +66,21 @@ require_once 'logic.php';
   <form action="services.php" method="GET">
     
     <div class="mb-3">
-      <label for="filter_name" class="form-label">Название услуги:</label>
+      <label class="form-label">Название услуги:</label>
       <input type="text" class="form-control" name="filter_name"
              value="<?= htmlspecialchars($_GET['filter_name'] ?? '') ?>"
              placeholder="Поиск по вхождению">
     </div>
     
     <div class="mb-3">
-      <label for="filter_description" class="form-label">Описание услуги:</label>
+      <label class="form-label">Описание услуги:</label>
       <input type="text" class="form-control" name="filter_description"
-             value="<?= htmlspecialchars($_GET['filter_description'] ?? '') ?>"
+             value="<?php echo htmlspecialchars($_GET['filter_description'] ?? '') ?>"
              placeholder="Ключевые слова в описании">
     </div>
 
     <div class="mb-3">
-      <label for="filter_worker" class="form-label">Рабочий:</label>
+      <label class="form-label">Рабочий:</label>
       <select class="form-select" name="filter_worker">
         <option value="">-- Все рабочие --</option>
         <?php foreach ($workersList as $worker): ?>
@@ -113,15 +113,13 @@ require_once 'logic.php';
     </div>
     
     <div class="d-flex justify-content-end">
-      <button type="submit" class="btn btn-primary btn-sm me-2">Применить</button>
-      <a href="services.php" class="btn btn-danger btn-sm">Сброс</a>
+      <button class="btn btn-primary me-2">Применить</button>
+      <a href="services.php" class="btn btn-danger">Сброс</a>
     </div>
   </form>
 </div>
-
         <?php if (count($services) > 0): ?>
-          <table class="table table-bordered ">
-            <thead class="table-success">
+          <table class="table">
               <tr>
                 <th>Фото</th>
                 <th>Название услуги</th>
@@ -129,22 +127,18 @@ require_once 'logic.php';
                 <th>Описание</th>
                 <th>Стоимость (руб.)</th>
               </tr>
-            </thead>
-            <tbody>
-
               <?php foreach ($services as $row): ?>
                 <tr>
                   <td>
-                    <?php $img = 'inc/images/' . htmlspecialchars($row['img_path']); ?>
+                    <?php $img = 'inc/image/' . htmlspecialchars($row['img_path']); ?>
                     <img src="<?= $img ?>" alt="Фото услуги" class="service-img">
                   </td>
-                  <td><?= htmlspecialchars($row['name']) ?></td>
+                  <td><?php echo htmlspecialchars($row['name']) ?></td>
                   <td><?= htmlspecialchars($row['worker_name']) ?></td>
                   <td><?= htmlspecialchars($row['description']) ?></td>
                   <td><?= htmlspecialchars($row['cost']) ?></td>
                 </tr>
               <?php endforeach; ?>
-            </tbody>
           </table>
 
         <?php else: ?>
@@ -152,7 +146,6 @@ require_once 'logic.php';
             По вашему запросу ничего не найдено.
           </div>
         <?php endif; ?>
-
     </main>
 
     <footer class="footer bg-dark text-light py-4 border-top border-4 border-primary">
@@ -193,4 +186,3 @@ require_once 'logic.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
-
