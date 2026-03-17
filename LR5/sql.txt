@@ -1,0 +1,49 @@
+USE tsj_service;
+
+CREATE TABLE `workers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `worker_id` int(11) NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `cost` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `worker_id` (`worker_id`),
+  CONSTRAINT `services_ibfk_1` FOREIGN KEY (`worker_id`) REFERENCES `workers` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+INSERT INTO `workers` (`id`, `name`) VALUES 
+(1, 'Иванов Иван (Сантехник)'),
+(2, 'Петров Петр (Электрик)'),
+(3, 'Сидоров Сидор (Дворник)'),
+(4, 'Смирнова Анна (Уборщица)'),
+(5, 'Кузнецов Алексей (Плотник)');
+
+INSERT INTO `services` (`id`, `name`, `img_path`, `worker_id`, `description`, `cost`) VALUES 
+(1, 'Замена смесителя', 'mixer.jpg', 1, 'Демонтаж старого и установка нового смесителя', 1500),
+(2, 'Устранение засора', 'clog.jpg', 1, 'Прочистка канализации механическим способом', 2000),
+(3, 'Установка унитаза', 'toilet.jpg', 1, 'Монтаж унитаза с подключением', 3000),
+(4, 'Замена розетки', 'socket.jpg', 2, 'Замена одной точки электропитания', 500),
+(5, 'Монтаж люстры', 'lamp.jpg', 2, 'Сборка и установка потолочного светильника', 1200),
+(6, 'Прокладка кабеля', 'cable.jpg', 2, 'Прокладка 1 метра кабеля в гофре', 150),
+(7, 'Уборка подъезда', 'cleaning.jpg', 4, 'Влажная уборка лестничных клеток', 500),
+(8, 'Мытье окон', 'window.jpg', 4, 'Сезонное мытье окон в подъезде', 300),
+(9, 'Замена замка', 'lock.jpg', 5, 'Врезка нового дверного замка', 1500),
+(10, 'Ремонт двери', 'door.jpg', 5, 'Регулировка петель входной двери', 800),
+(11, 'Покраска лавочки', 'bench.jpg', 3, 'Окрашивание одной уличной лавочки', 1000),
+(12, 'Стрижка кустов', 'bush.jpg', 3, 'Декоративная стрижка кустарников во дворе', 2500),
+(13, 'Замена счетчика воды', 'water_meter.jpg', 1, 'Замена прибора учета ГВС/ХВС', 1000),
+(14, 'Установка автомата', 'automat.jpg', 2, 'Установка автоматического выключателя в щиток', 600),
+(15, 'Герметизация швов', 'seam.jpg', 5, 'Заделка межпанельных швов (1 п.м.)', 800),
+(16, 'Уборка снега', 'snow.jpg', 3, 'Расчистка придомовой территории от снега', 1500),
+(17, 'Вывоз мусора', 'trash.jpg', 3, 'Вывоз строительного мусора (1 рейс)', 3500),
+(18, 'Диагностика проводки', 'diag_electro.jpg', 2, 'Поиск неисправности в электросети', 1000),
+(19, 'Ремонт радиатора', 'radiator.jpg', 1, 'Устранение течи батареи отопления', 2500),
+(20, 'Генеральная уборка', 'general_clean.jpg', 4, 'Комплексная уборка холла', 2000);
