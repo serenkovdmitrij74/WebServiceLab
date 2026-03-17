@@ -1,6 +1,3 @@
-<?php
-// inc/footer.php
-?>
     </main>
     <footer class="footer bg-dark text-light py-4 border-top border-4 border-primary mt-5">
         <div class="container">
