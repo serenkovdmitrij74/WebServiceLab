@@ -2,13 +2,13 @@
 session_start();
 require_once 'auth.php';
 
-// Если уже авторизован - редирект на главную
+
 if (isAuthorized()) {
     redirect('services.php');
 }
 
 $errors = [];
-$old = $_POST; // для сохранения введённых значений
+$old = $_POST; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
