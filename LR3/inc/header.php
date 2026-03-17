@@ -1,6 +1,3 @@
-<?php
-// inc/header.php
-?>
 <!doctype html>
 <html lang="ru">
 <head>
